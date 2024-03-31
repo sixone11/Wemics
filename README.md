@@ -32,7 +32,7 @@ python3
 
 # Citation
 
-If you find our research useful, please consider citing: Liu Y et al. Wemics: a single-base resolution methylation quantification method by weighting methylation of consecutive CpG sites (2023).
+If you find our research useful, please consider citing: Liu Y, Yi J, Wu P, Zhang J, Li X, Li J, Zhou L, Liu Y, Xu H, Chen E, Zhang H, Liang M, Liu P, Pan X, Lu Y. Wemics: A Single-Base Resolution Methylation Quantification Method for Enhanced Prediction of Epigenetic Regulation. Adv Sci (Weinh). 2024 Mar 28:e2308884. doi: 10.1002/advs.202308884
 
 # Contact
 
