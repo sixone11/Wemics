@@ -1,5 +1,5 @@
 # Wemics
-Code for the manuscript "Wemics: a single-base resolution methylation quantification method by weighting methylation of consecutive CpG sites".
+Code for the reference "Wemics: A Single-Base Resolution Methylation Quantification Method for Enhanced Prediction of Epigenetic Regulation".
 
 # Introduction
 Proper quantification of RRBS data is the most important first step in studying DNA methylation. The methylation level of a genomic region has long been quantified by C/C+T(i.e., the average proportion of methylated cytosines in a genomic region).
