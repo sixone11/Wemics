@@ -1,0 +1,3 @@
+"paired_metilene" generates LRT;
+"paired_metilene2" generates p values based on LRT and works as a part of segmentation algorithm.
+The remaining file "metseg.c" is failed in compilation in linux.
