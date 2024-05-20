@@ -1,14 +1,34 @@
 #!/bin/bash
-# modifying by yourself
-wkd=/data/sixone/lllab/RRBS/downstream_analysis
-bam=${wkd}/Wemics_example/example.bam
-sample=example 
+##############################################################################
+help_file="This is a free application used for quantifying DNA methylation level for RRBS data\n\nUSAGE: bash pipeline.bash -w/--workdir <work directory for sample> -b/--bam_file <bam file position> -s/--sample <sample name>\n\nRequired Arguments:\n\n-w/--workdir\tThe work directory for sample\n\n-b/--bam_file\tThe bam file position for sample\n\n-s/--sample\tThe sample name for analysis.\n\nOther:\n\n-h/--help\tDisplay the help file"
+TEMP=`getopt -o w:s:b:h --long workdir:,sample:,bam:,help -- "$@"` 
+eval set -- "$TEMP"
+while true ; do
+    case "$1" in
+	-w|--workdir)
+	    wkd=$2 ; shift 2;;
+    -b|--bam)
+	    bam=$2; shift 2;;  
+    -s|--sample)
+        sample=$2;shift 2;;
+	-h|--help)
+		echo -e ${help_file}; exit 1 ;;
+	--) shift ; break ;;
+    *) echo "Internal error!" ; exit 1 ;;
+    esac
+done
+##############################################
+# wkd=/data/sixone/lllab/RRBS/downstream_analysis
+# bam=${wkd}/Wemics_example/example.bam
+# sample=example 
 
-# Work directory 
-cd ${wkd}/Wemics_example
+# # Work directory 
+# cd ${wkd}/Wemics_example
 
 # Process the bam file from bismark(bam file was sorted by name)
 # Separate the information of read1 and read2 from bam file
+
+cd ${wkd}
 samtools view -@10 ${sample}.bam|\
 awk -v read1=${sample}_read1.out  -v read2=${sample}_read2.out '{if(NR%2==1) print $0 >>read1;else print $0 >>read2}' 
 
@@ -51,6 +71,6 @@ cat ${sample}_${contig}_Wemics.bed|awk 'BEGIN{FS=OFS="\t"} {print $1,$2,$3,$5,$4
 
 
 # Remove temp file
-rm ${sample}_${contig}_Wemics.bed \
-${sample}_read*.out ${sample}_read*.bed
+# rm ${sample}_${contig}_Wemics.bed \
+# ${sample}_read*.out ${sample}_read*.bed
 
